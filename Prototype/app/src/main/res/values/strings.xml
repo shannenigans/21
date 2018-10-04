@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Prototype</string>
+    <string name="Open">Open</string>
+    <string name="Close">Close</string>
+    <string name="Menu">Menu</string>
+    <string name="BetDecision">Bet Decision</string>
+    <string name="BetValue">Bet Value</string>
+    <string name="Dollar">$</string>
+    <string name="picture">Picture</string>
+    <string name="description_info">Info</string>
+    <string name="request_permission">This sample needs camera permission.</string>
+    <string name="camera_error">This device doesn\'t support Camera2 API.</string>
+
+</resources>
