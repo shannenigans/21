@@ -12,11 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextureView
-            android:id="@+id/textureView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/darkgrey"/>
+
 
         <ImageButton
             android:id="@+id/menuButton"
@@ -25,7 +21,7 @@
             android:layout_marginStart="35dp"
             android:layout_marginTop="18dp"
             android:contentDescription="@string/Menu"
-            android:onClick="buttonOnClick"
+            android:onClick="menuButtonOnClick"
             android:src="@drawable/ic_baseline_reorder_24px"
             android:text="@string/Menu"
             android:textColor="@color/darkgrey"
@@ -73,15 +69,28 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="96dp"
+            android:layout_marginBottom="40dp"
+            android:text="@string/readTable"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/button5"
+            app:layout_constraintVertical_bias="0.0" />
+
 
     </android.support.constraint.ConstraintLayout>
     <android.support.design.widget.NavigationView
+        android:id="@+id/navigationLayout"
         android:layout_width="150dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:background="@color/white"
         app:itemIconTint="@color/darkgrey"
-        app:itemTextColor="@color/darkgrey"
+        app:itemTextColor="@color/colorPrimaryDark"
         app:menu="@menu/drawermenu">
 
     </android.support.design.widget.NavigationView>
