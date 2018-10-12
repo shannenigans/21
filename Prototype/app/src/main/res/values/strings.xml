@@ -9,5 +9,7 @@
     <string name="picture">Picture</string>
     <string name="description_info">Info</string>
     <string name="readTable">Read Table</string>
+    <string name="testView">Test View</string>
+    <string name="resetGame">Reset Game</string>
 
 </resources>
