@@ -32,13 +32,15 @@ import android.view.View;
 import android.widget.TextView;
 
 import java.util.Collections;
+import java.util.Locale;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,{
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
 
     //declaring class variables
     private DrawerLayout mDrawerLayout;
     private Blackjack game;
+    private TextView test;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //Initialize Blackjack state keeper
         game = new Blackjack();
 
+        test = findViewById(R.id.testView);
 
         //declares width and heights
         int width = displayMetrics.widthPixels;
@@ -81,17 +84,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //insert functionality
     }
 
-    public void resetGameOnClick(View v){
-        game.reset();
-        TextView test = findViewById(R.id.testView);
-        test.setText(Integer.toString(game.getCount()));
-    }
-
     public void readTableButtonOnClick(View v){
         //insert functionality
-        game.readCards(new String[]{"AH","TH","TD","TS"});
-        TextView test = findViewById(R.id.testView);
-        test.setText(Integer.toString(game.getCount()));
+        game.setPlayerHandValue(16);
+        game.readCards(new String[]{"AH", "3S", "TD", "TS", "QD","4H", "KD"});
+        String str = String.format(Locale.getDefault(),
+                "Chance to bust: %f",
+                game.getChanceToBust());
+        test.setText(str);
     }
 
     //checks to see if the navigation is being used
@@ -120,7 +120,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             }
             case R.id.resetGame:{
-
+                game.reset();
+                test.setText(Integer.toString(game.getCount()));
                 break;
             }
         }
