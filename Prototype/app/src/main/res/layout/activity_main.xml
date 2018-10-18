@@ -73,7 +73,7 @@
             android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="96dp"
+            android:layout_marginEnd="104dp"
             android:layout_marginBottom="40dp"
             android:text="@string/readTable"
             app:layout_constraintBottom_toBottomOf="parent"

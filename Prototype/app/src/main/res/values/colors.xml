@@ -6,4 +6,6 @@
     <color name="colorAccent">#ff4081</color>
     <color name="darkgrey">#50d9ff</color>
     <color name="background">#4af9ff</color>
+    <color name="deckValue">#001eff</color>
+    <color name="settings">#51ff00</color>
 </resources>

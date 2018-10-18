@@ -10,4 +10,6 @@
     <string name="description_info">Info</string>
     <string name="readTable">Read Table</string>
 
+    <string name="deck">Currently have %1$s decks</string>
+
 </resources>

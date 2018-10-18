@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorAccent">
 
-    <EditText
-        android:id="@+id/betUnitValue"
-        android:layout_width="227dp"
-        android:layout_height="79dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="35dp"
-        android:layout_marginEnd="170dp"
-        android:ems="10"
-        android:hint="Enter Unit Value"
-        android:inputType="number"
-        android:textAlignment="center"
-        android:textSize="30sp" />
-
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/settingsExitButton2"
+        android:layout_width="50dp"
+        android:layout_height="47dp"
+        android:background="@mipmap/ic_launcher_foreground"
+        android:onClick="closeBetValuePopup"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textView6"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="241dp"
-        android:layout_marginBottom="37dp"
-        android:text="EXIT" />
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="169dp"
+        android:layout_marginBottom="0dp"
+        android:text="@string/deck"
+        android:textAlignment="center"
+        android:textSize="30sp" />
 </RelativeLayout>

@@ -1,16 +1,16 @@
 package com.blackjack.woods.prototype;
 
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.view.View;
 
-public class Pop extends MainActivity{
+public class SettingsPopup extends MainActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //this sets the layout to the popup screen
-        setContentView(R.layout.betunitspopup);
+        setContentView(R.layout.settingspopup);
 
         //gets the dimensions of the phone's screen
         DisplayMetrics displayMetrics = new DisplayMetrics();
@@ -21,7 +21,11 @@ public class Pop extends MainActivity{
         int hieght = displayMetrics.heightPixels;
 
         //set the layout size so the popup isn't fullscreen
-        getWindow().setLayout((int)(width*.8), (int) (hieght*.6));
+        getWindow().setLayout((int)(width*.85), (int) (hieght*.85));
 
+    }
+
+    public void closeSettingsPopup(View v){
+        finish();
     }
 }
