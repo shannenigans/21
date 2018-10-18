@@ -37,6 +37,8 @@ import org.opencv.android.JavaCameraView;
 import org.opencv.android.OpenCVLoader;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
+import org.opencv.core.Scalar;
+import org.opencv.core.Core;
 import org.opencv.imgproc.Imgproc;
 
 import java.util.Collections;
@@ -163,10 +165,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //Core.transpose(mat1, mat2);
         //Imgproc.resize(mat2, mat3, mat3.size(), 0, 0, 0);
         //Core.flip(mat3, mat1, 1);
-        //Mat temp = new Mat();
-        //Imgproc.ctvColor(mat1, temp, Imgproc.COLOR_RGBA2GRAY);
+        Mat gray = new Mat(), edges = new Mat(), dest = new Mat();
+//        Imgproc.ctvColor(mat1, new Mat(), Imgproc.COLOR_RGBA2GRAY);
+        Imgproc.cvtColor(mat1, gray, Imgproc.COLOR_RGBA2GRAY);
+        Imgproc.blur(gray, edges, new Size(3,3);
+        Imgproc.Canny(edges, edges, 100, 200, 3);
+        Core.add(dest, Scalar.all(0), dest);
+        mat1.copyTo(dest, edges);
 
-        return mat1;
+
+        return dest;
     }
 
     @Override
