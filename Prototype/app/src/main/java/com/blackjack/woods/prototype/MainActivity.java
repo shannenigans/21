@@ -46,7 +46,7 @@ import org.opencv.imgproc.Imgproc;
 import java.util.Locale;
 
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener , CameraBridgeViewBase.CvCameraViewListener2{
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener , CameraBridgeViewBase.CvCameraViewListener2 {
 
     private Blackjack game;
     private TextView test;
@@ -96,23 +96,32 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Toast.makeText(getApplicationContext(), "Nope, it don't work", Toast.LENGTH_SHORT).show();
         }
         base = (JavaCameraView)findViewById(R.id.myCameraView);
-        base.setVisibility(SurfaceView.VISIBLE);
-        base.setCvCameraViewListener(this);
-        callback = new BaseLoaderCallback(this) {
-            @Override
-            public void onManagerConnected(int status) {
 
-                switch (status) {
-                    case BaseLoaderCallback.SUCCESS:
-                        base.enableView();
-                        break;
+        try{
+            base.setVisibility(SurfaceView.VISIBLE);
+            base.setCvCameraViewListener(this);
+            callback = new BaseLoaderCallback(this) {
+                @Override
+                public void onManagerConnected(int status) {
 
-                    default:
-                        super.onManagerConnected(status);
-                        break;
+                    switch (status) {
+                        case BaseLoaderCallback.SUCCESS:
+                            base.enableView();
+                            break;
+
+                        default:
+                            super.onManagerConnected(status);
+                            break;
+                    }
                 }
-            }
-        };
+            };
+        }
+        catch(NullPointerException e){
+            Log.d("nullpointer", "setNavigationViewListener: The camera dun goofed");
+        }
+
+
+
         //end open cv stuff
     }
 
@@ -146,7 +155,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     //
     private void setNavigationViewListener() {
         NavigationView navigationView = (NavigationView)findViewById(R.id.navigationLayout);
-        navigationView.setNavigationItemSelectedListener(MainActivity.this);
+        try{
+            navigationView.setNavigationItemSelectedListener(MainActivity.this);
+        } catch(NullPointerException e){
+            Log.d("nullpointer", "setNavigationViewListener: The navigation veiw was null");
+        }
+
     }
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -241,7 +255,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (!OpenCVLoader.initDebug()) {
             Toast.makeText(getApplicationContext(), "Nope, it don't work again", Toast.LENGTH_SHORT).show();
         } else {
-            callback.onManagerConnected(BaseLoaderCallback.SUCCESS);
+            try{
+                callback.onManagerConnected(BaseLoaderCallback.SUCCESS);
+            }
+            catch(NullPointerException e){
+                Log.d("nullpointer", "setNavigationViewListener: The camera dun goofed line 259");
+            }
+
+
         }
     }
 
