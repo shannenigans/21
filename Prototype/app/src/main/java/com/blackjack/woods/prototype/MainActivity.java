@@ -168,7 +168,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Mat gray = new Mat(), edges = new Mat(), dest = new Mat();
 //        Imgproc.ctvColor(mat1, new Mat(), Imgproc.COLOR_RGBA2GRAY);
         Imgproc.cvtColor(mat1, gray, Imgproc.COLOR_RGBA2GRAY);
-        Imgproc.blur(gray, edges, new Size(3,3);
+        Imgproc.blur(gray, edges, new org.opencv.core.Size(3,3));
         Imgproc.Canny(edges, edges, 100, 200, 3);
         Core.add(dest, Scalar.all(0), dest);
         mat1.copyTo(dest, edges);
