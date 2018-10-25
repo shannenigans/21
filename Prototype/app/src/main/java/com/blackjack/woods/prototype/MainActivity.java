@@ -146,8 +146,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             }
         }
-        //close navigation drawer
-        mDrawerLayout.closeDrawer(Gravity.START);
         return true;
     }
 
