@@ -16,8 +16,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Pop"
-            android:theme="@style/AppTheme.CustomTheme"></activity>
+        <activity android:name=".SettingsPopup"
+            android:theme="@style/AppTheme.CustomTheme">
+        </activity>
+        <activity android:name=".DeckUnitsPopup"
+            android:theme="@style/AppTheme.CustomTheme">
+        </activity>
+        <activity android:name=".BetUnitPopup"
+            android:theme="@style/AppTheme.CustomTheme">
+        </activity>
     </application>
 
 </manifest>

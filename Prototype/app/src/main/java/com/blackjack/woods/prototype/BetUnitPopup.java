@@ -1,16 +1,15 @@
 package com.blackjack.woods.prototype;
 
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 
-public class Pop extends MainActivity{
+public class BetUnitPopup extends MainActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //this sets the layout to the popup screen
-        setContentView(R.layout.betunitspopup);
+        setContentView(R.layout.betunitpopup);
 
         //gets the dimensions of the phone's screen
         DisplayMetrics displayMetrics = new DisplayMetrics();
