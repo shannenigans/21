@@ -94,9 +94,6 @@ public class MainCameraClass extends MainActivity implements NavigationView.OnNa
     public void menuButtonOnClick(View v){
         //opens up the sliding menu
         mDrawerLayout.openDrawer(Gravity.START);
-
-
-
     }
 
     public void pictureButtonOnClick(View v){
@@ -142,20 +139,43 @@ public class MainCameraClass extends MainActivity implements NavigationView.OnNa
 
     @Override
     public Mat onCameraFrame(CameraBridgeViewBase.CvCameraViewFrame theFrame) {
+
+        //takes the camera frame
         mat1 = theFrame.rgba();
-        //Core.transpose(mat1, mat2);
-        //Imgproc.resize(mat2, mat3, mat3.size(), 0, 0, 0);
-        //Core.flip(mat3, mat1, 1);
-        Mat gray = new Mat(), edges = new Mat(), dest = new Mat();
-//        Imgproc.ctvColor(mat1, new Mat(), Imgproc.COLOR_RGBA2GRAY);
+
+        //defines the mats to use to manipulate the mat1 frame image
+        Mat gray = new Mat();
+        Mat edges = new Mat();
+        Mat dest = new Mat();
+
+//      Core.transpose(mat1, mat2);
+//      Imgproc.resize(mat2, mat3, mat3.size(), 0, 0, 0);
+//      Core.flip(mat3, mat1, 1);
+//      Imgproc.ctvColor(mat1, new Mat(), Imgproc.COLOR_RGBA2GRAY);
+
+        //turns mat1s frame image into black and white and saves it into the gray mat
         Imgproc.cvtColor(mat1, gray, Imgproc.COLOR_RGBA2GRAY);
+
+        //blurs the gray mat and saves it as the edges mat
         Imgproc.blur(gray, edges, new org.opencv.core.Size(3,3));
+
+        //this function finds all of the edges within the edges and re-writes itself to show found contours
         Imgproc.Canny(edges, edges, 100, 200, 3);
         Core.add(dest, Scalar.all(0), dest);
-        mat1.copyTo(dest, edges);
 
+        //mask the edges found in the Canny function to the dest mat
+        mat1.copyTo(dest,edges);
 
-        return dest;
+        //copy the dest mat to mat1
+        dest.copyTo(mat1);
+
+        //releases the data within the mats which was causing the memory leak
+        edges.release();
+        dest.release();
+        gray.release();
+
+        //return mat1 instead of dest so that we can release the values in the dest mat
+        return mat1;
     }
 
     @Override
