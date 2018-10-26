@@ -8,7 +8,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        >
+
         <activity android:name=".MainActivity" android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,6 +26,10 @@
         </activity>
         <activity android:name=".BetUnitPopup"
             android:theme="@style/AppTheme.CustomTheme">
+        </activity>
+        <activity android:name=".MainCameraClass"
+            android:theme="@style/AppTheme"
+            android:screenOrientation="landscape">
         </activity>
     </application>
 
