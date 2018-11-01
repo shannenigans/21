@@ -1,6 +1,7 @@
 package com.blackjack.woods.prototype;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -15,6 +16,9 @@ import android.view.MenuItem;
 import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Toast;
+
+import com.google.android.gms.vision.CameraSource;
+import com.google.android.gms.vision.text.TextRecognizer;
 
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.CameraBridgeViewBase;
@@ -34,6 +38,7 @@ public class MainCameraClass extends MainActivity implements NavigationView.OnNa
     CameraBridgeViewBase base;
     BaseLoaderCallback callback;
     Mat mat1, mat2, mat3;
+    CameraSource cameraSource;
 
 
 
@@ -183,6 +188,7 @@ public class MainCameraClass extends MainActivity implements NavigationView.OnNa
         mat1.release();
         mat2.release();
         mat3.release();
+        cameraSource.release();
     }
 
     @Override
@@ -190,6 +196,7 @@ public class MainCameraClass extends MainActivity implements NavigationView.OnNa
         mat1 = new Mat(width, height, CvType.CV_8UC4);
         mat2 = new Mat(width, height, CvType.CV_8UC4);
         mat3 = new Mat(width, height, CvType.CV_8UC4);
+        createCameraSource();
     }
 
     @Override
@@ -216,5 +223,22 @@ public class MainCameraClass extends MainActivity implements NavigationView.OnNa
         if (base != null) {
             base.disableView();
         }
+    }
+
+    private void createCameraSource() {
+        Context context = getApplicationContext();
+
+        TextRecognizer textRecognizer = new TextRecognizer.Builder(context).build();
+        if (!textRecognizer.isOperational()) {
+            Toast.makeText(this, "It didn't work", Toast.LENGTH_SHORT);
+        }
+
+        cameraSource =
+                new CameraSource.Builder(getApplicationContext(), textRecognizer)
+                .setFacing(CameraSource.CAMERA_FACING_BACK)
+                .setRequestedPreviewSize(1280, 1240)
+                .setRequestedFps(15.0f)
+                .setAutoFocusEnabled(true)
+                .build();
     }
 }
