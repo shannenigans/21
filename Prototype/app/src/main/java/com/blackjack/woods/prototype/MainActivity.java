@@ -17,6 +17,7 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.SurfaceView;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -45,6 +46,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.inputscreen);
+
+
+//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+//                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//        View decorView = getWindow().getDecorView();
+//// Hide the status bar.
+//        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+//        decorView.setSystemUiVisibility(uiOptions);
 
         if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CAMERA)
                 == PackageManager.PERMISSION_DENIED)

@@ -7,14 +7,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/darkgrey"
-    tools:context=".MainActivity">
+    tools:context=".MainCameraClass">
+
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <org.opencv.android.JavaCameraView
+            android:id="@+id/myCameraView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/myCameraView"/>
+            android:layout_height="match_parent" />
 
 
         <ImageButton
@@ -86,12 +88,15 @@
 
 
     </android.support.constraint.ConstraintLayout>
+
     <android.support.design.widget.NavigationView
         android:id="@+id/navigationLayout"
         android:layout_width="150dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:background="@color/white"
+        android:fitsSystemWindows="false"
+        android:windowActionBarOverlay="true"
         app:itemIconTint="@color/darkgrey"
         app:itemTextColor="@color/colorPrimaryDark"
         app:menu="@menu/drawermenu">

@@ -14,6 +14,7 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.SurfaceView;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import org.opencv.android.BaseLoaderCallback;
@@ -42,24 +43,13 @@ public class MainCameraClass extends MainActivity implements NavigationView.OnNa
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
         setContentView(R.layout.activity_main);
 
 
 
-        //menu stuff
-        DisplayMetrics displayMetrics = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-
-        //declares width and heights
-        int width = displayMetrics.widthPixels;
-        int hieght = displayMetrics.heightPixels;
-
-        //set the layout to fullscreen
-        getWindow().setLayout(width,hieght);
-
-
         //defining the menu
-        mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer);
+        mDrawerLayout = findViewById(R.id.drawer);
         setNavigationViewListener();
         //end menu stuff
 
@@ -106,7 +96,7 @@ public class MainCameraClass extends MainActivity implements NavigationView.OnNa
 
     //checks to see if the navigation is being used
     private void setNavigationViewListener() {
-        NavigationView navigationView = (NavigationView) findViewById(R.id.navigationLayout);
+        NavigationView navigationView = findViewById(R.id.navigationLayout);
         navigationView.setNavigationItemSelectedListener(this);
     }
 

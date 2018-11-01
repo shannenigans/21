@@ -2,8 +2,14 @@
 <resources>
     <color name="colorPrimary">#2d2928</color>
     <color name="colorPrimaryDark">#211e1c</color>
-    <color name="white">#ffffff</color>
     <color name="colorAccent">#ff4081</color>
     <color name="darkgrey">#50d9ff</color>
     <color name="background">#4af9ff</color>
+
+    <color name="orange">#c75b12</color>
+    <color name="light_green">#008542</color>
+    <color name="white">#ffffff</color>
+    <color name="timberwolf">#ddd5d0</color>
+    <color name="davys_grey">#5b5b5b</color>
+
 </resources>
