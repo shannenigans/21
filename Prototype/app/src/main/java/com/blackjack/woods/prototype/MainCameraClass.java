@@ -18,6 +18,8 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.gms.vision.CameraSource;
+import com.google.android.gms.vision.Detector;
+import com.google.android.gms.vision.text.TextBlock;
 import com.google.android.gms.vision.text.TextRecognizer;
 
 import org.opencv.android.BaseLoaderCallback;
@@ -39,7 +41,7 @@ public class MainCameraClass extends MainActivity implements NavigationView.OnNa
     BaseLoaderCallback callback;
     Mat mat1, mat2, mat3;
     CameraSource cameraSource;
-
+    Processor processor;
 
 
 
@@ -48,7 +50,6 @@ public class MainCameraClass extends MainActivity implements NavigationView.OnNa
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-
 
 
         //menu stuff
@@ -144,7 +145,8 @@ public class MainCameraClass extends MainActivity implements NavigationView.OnNa
 
     @Override
     public Mat onCameraFrame(CameraBridgeViewBase.CvCameraViewFrame theFrame) {
-
+        createCameraSource();
+        processor.getAT(0);
         //takes the camera frame
         mat1 = theFrame.rgba();
 
@@ -180,6 +182,7 @@ public class MainCameraClass extends MainActivity implements NavigationView.OnNa
         gray.release();
 
         //return mat1 instead of dest so that we can release the values in the dest mat
+
         return mat1;
     }
 
@@ -232,7 +235,7 @@ public class MainCameraClass extends MainActivity implements NavigationView.OnNa
         if (!textRecognizer.isOperational()) {
             Toast.makeText(this, "It didn't work", Toast.LENGTH_SHORT);
         }
-
+        processor = new Processor();
         cameraSource =
                 new CameraSource.Builder(getApplicationContext(), textRecognizer)
                 .setFacing(CameraSource.CAMERA_FACING_BACK)
@@ -240,5 +243,7 @@ public class MainCameraClass extends MainActivity implements NavigationView.OnNa
                 .setRequestedFps(15.0f)
                 .setAutoFocusEnabled(true)
                 .build();
+        textRecognizer.setProcessor(processor);
+
     }
 }
