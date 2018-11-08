@@ -46,6 +46,10 @@ public class MainCameraClass extends MainActivity implements NavigationView.OnNa
 
         setContentView(R.layout.activity_main);
 
+        View decorView = getWindow().getDecorView();
+// Hide the status bar.
+        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+        decorView.setSystemUiVisibility(uiOptions);
 
 
         //defining the menu
