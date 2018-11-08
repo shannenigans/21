@@ -20,7 +20,7 @@ public class BetUnitPopup extends MainActivity{
         int hieght = displayMetrics.heightPixels;
 
         //set the layout size so the popup isn't fullscreen
-        getWindow().setLayout((int)(width*.8), (int) (hieght*.6));
+        getWindow().setLayout((int)(width*.9), (int) (hieght*.8));
 
     }
 }

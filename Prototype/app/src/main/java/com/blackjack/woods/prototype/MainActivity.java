@@ -51,12 +51,6 @@ public class MainActivity extends AppCompatActivity {
 // Hide the status bar.
         int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
         decorView.setSystemUiVisibility(uiOptions);
-//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-//                WindowManager.LayoutParams.FLAG_FULLSCREEN);
-//        View decorView = getWindow().getDecorView();
-//// Hide the status bar.
-//        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
-//        decorView.setSystemUiVisibility(uiOptions);
 
         if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CAMERA)
                 == PackageManager.PERMISSION_DENIED)
@@ -82,6 +76,10 @@ public class MainActivity extends AppCompatActivity {
                 if(inputText1.getText().toString() != null){
                     input1 = true;
                 }
+                else
+                {
+                    input1=true;
+                }
                 if(input1 == true && input2 == true){
                     inputButton.setEnabled(true);
                 }
@@ -101,6 +99,10 @@ public class MainActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
                 if(inputText2.getText().toString() != null){
                     input2 = true;
+                }
+                else
+                {
+                    input2 = false;
                 }
 
                 if(input1 == true && input2 == true){
