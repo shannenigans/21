@@ -43,7 +43,8 @@ public class MainCameraClass extends MainActivity implements NavigationView.OnNa
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
+        //Set content view to activity_main so that findViewByID finds the correct references
+        setContentView(R.layout.activity_main);
 
         View decorView = getWindow().getDecorView();
 // Hide the status bar.
